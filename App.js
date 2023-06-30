@@ -1,12 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
+import { SafeAreaView } from 'react-native';
 import { StyleSheet, Text, View } from 'react-native';
+import Entypo from 'react-native-vector-icons/Entypo';
+import HomeScreen from './src/screens/HomeScreen';
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+    <StatusBar style="auto" />
+    <SafeAreaView>
+      <HomeScreen></HomeScreen>
+    </SafeAreaView>
+    </>
+    
   );
 }
 
@@ -18,3 +24,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default App;
