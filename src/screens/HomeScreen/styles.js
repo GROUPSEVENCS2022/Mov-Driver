@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     },
     poolText: {
         fontSize: 15,
-        color: 'whit',
+        color: 'white',
         fontWeight: 'bold',
     }
 });

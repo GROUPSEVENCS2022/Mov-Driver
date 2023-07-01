@@ -3,13 +3,22 @@ import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import styles from './styles';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useState } from 'react';
+import NewOrderPopup from '../../components/NewOrderPopup';
 
 const HomeScreen = () => {
+
+    const [isOnLine, setIsOnline] = useState(false);
+
+    const onStartPress = () => {
+        setIsOnline(!isOnLine);
+    }
 
     const lat = 0.3354670642213976;
     const long = 32.57583878879299;
 
-    const GOOGLE_MAPS_APIKEY = 'AIzaSyDytX2Y8BTCdtT0iOsKcPX_CFHGCpiuT9E';
+    const GOOGLE_MAPS_APIKEY = 'key';
 
  const origin = {
     latitude: 0.3354670642213976,
@@ -75,17 +84,26 @@ const HomeScreen = () => {
         </Pressable>
 
         <Pressable 
-            onPress={() => console.warn('start')} 
+            onPress={onStartPress} 
             style={styles.startButton}>
-            <Text style={styles.startText}>Start</Text>
+            <Text style={styles.startText}>
+                {
+                    isOnLine ? 'Start' : 'Stop'
+                }
+            </Text>
             {/* <Entypo name={"menu"} size={24} color="#4a4a4a"/> */}
         </Pressable>
 
         <View style={styles.bottomContainer}>
-            <Entypo name={"menu"} size={24} color="#4a4a4a"/>
-            <Text style={styles.bottomText}>Mov is offline</Text>
+            <Ionicons name={"options"} size={24} color="#4a4a4a"/>
+            {
+                isOnLine
+                ? <Text style={styles.bottomText}>Mov is Offline</Text>
+                : <Text style={styles.bottomText}>Mov is Online</Text>
+            }
             <Entypo name={"menu"} size={24} color="#4a4a4a"/>
         </View>
+        <NewOrderPopup/>
     </View>   
   );
 }
