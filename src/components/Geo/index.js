@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView } from 'react-native';
-import { StyleSheet, Text, View } from 'react-native';  
-import HomeScreen from './src/screens/HomeScreen';
+import { StyleSheet, Text, View, Button, PermissionsAndroid } from 'react-native';
 import * as Location from 'expo-location';
 
-const App = () => {
+const Geo = () => {
 
- /*  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
   useEffect(() => {
@@ -19,7 +17,7 @@ const App = () => {
         return;
       }
 
-      let location = await Location.getCurrentPositionAsync({});
+      let location = await Location.getCurrentPositionAsync();
       setLocation(location);
     })();
   }, []);
@@ -29,17 +27,12 @@ const App = () => {
     text = errorMsg;
   } else if (location) {
     text = JSON.stringify(location);
-  } */
+  }  
 
-  return (
-    <>
-    <StatusBar style="auto" />
-    <SafeAreaView>
-      <HomeScreen></HomeScreen>
-    </SafeAreaView>
-    </>
-    
-  );
+  return {
+    latitude: location?.coords.latitude,
+    longitude: location?.coords.longitude,
+  };
 }
 
 const styles = StyleSheet.create({
@@ -51,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Geo;
