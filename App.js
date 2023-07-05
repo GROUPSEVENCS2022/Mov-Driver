@@ -4,6 +4,9 @@ import { SafeAreaView } from 'react-native';
 import { StyleSheet, Text, View } from 'react-native';  
 import HomeScreen from './src/screens/HomeScreen';
 import * as Location from 'expo-location';
+import PoolsScreen from './src/screens/PoolsScreen';
+import PoolStatusScreen from './src/screens/PoolStatusScreen';
+import { NavigationContainer } from '@react-navigation/native';
 
 const App = () => {
 
@@ -33,10 +36,14 @@ const App = () => {
 
   return (
     <>
-    <StatusBar style="auto" />
-    <SafeAreaView>
-      <HomeScreen></HomeScreen>
-    </SafeAreaView>
+    <NavigationContainer>
+    {/* <StatusBar style="auto" />
+    <SafeAreaView> */}
+      {/* <HomeScreen></HomeScreen> */}
+      {/* <PoolsScreen></PoolsScreen> */}
+      <PoolStatusScreen></PoolStatusScreen>
+    {/* </SafeAreaView> */}
+    </NavigationContainer>
     </>
     
   );

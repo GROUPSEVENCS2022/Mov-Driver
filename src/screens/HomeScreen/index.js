@@ -45,10 +45,10 @@ const HomeScreen = () => {
     const lat = 0.3354670642213976;
     const long = 32.57583878879299;
 
-    const dlat = 0.3380312117705973;
-    const dlong = 32.58558057195873;
+    const dlat = 0.3580312117705973;
+    const dlong = 32.58758057195873;
 
-    const GOOGLE_MAPS_APIKEY = 'key';
+    const GOOGLE_MAPS_APIKEY = 'AIzaSyDytX2Y8BTCdtT0iOsKcPX_CFHGCpiuT9E';
 
     const origin = {
         latitude: 0.3354670642213976,
@@ -96,21 +96,65 @@ const HomeScreen = () => {
             latitude: location?.coords.latitude,
             longitude: location?.coords.longitude,
         });
-
-
         // console.log(location?.coords.latitude);
         // console.log(location?.coords.longitude);
-
     }
 
-    const renderBottomTitle = () => {
+    const onDirectionFound = (result) => {
         if(order) {
+            setOrder({
+                ...order,
+                distance: parseFloat(`${result?.distance}`).toFixed(2),
+                duration: parseFloat(`${result?.duration}`).toFixed(2),
+                onStation: order.onStation || parseFloat(`${result?.duration}`).toFixed(2) < 9.0,
+                isFinished: order.onStation && parseFloat(`${result?.duration}`).toFixed(2) < 6.5,
+            })
+        }
+            /* console.log(`${result?.distance}`);
+            console.log(`${result?.duration}`);  */    
+    }
+
+    const getDestination = () => {
+        if(order && order?.onStation) {
+            return {
+                latitude: order.destinationLatitude,
+                longitude: order.destinationLongitude,
+            }
+        }
+        return {
+            latitude: order.originLatitude,
+            longitude: order.originLongitude,
+        }
+    }
+    const renderBottomTitle = () => {
+
+        if(order && order.isFinished) 
+        {
+            return(
+                <View style={{alignItems: 'center'}}>
+                    <View 
+                        style={{
+                            flexDirection: 'row', 
+                            alignItems: 'center', 
+                            justifyContent: 'center',
+                            backgroundColor: 'green', 
+                            width: 200
+                        }}
+                    >
+                        <Text style={{color: 'white', fontWeight: 'bold'}}>COMPLETE {order?.type}</Text>                        
+                    </View> 
+                    <Text style={styles.bottomText}>{order?.user.name}</Text>
+                </View>           
+            )
+        }
+
+        if(order && order.onStation) {
             return(
                 <View style={{alignItems: 'center'}}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <Text>1 min</Text>
+                        <Text>{order?.duration} Mins </Text>
                         <View style={{
-                            backgroundColor: '#48d42a', 
+                            backgroundColor: 'green', 
                             marginHorizontal: 10,
                             width: 30,
                             height: 30,
@@ -120,9 +164,32 @@ const HomeScreen = () => {
                             }}>
                             <FontAwesome name={"user"} color={'white'} size={20} />
                         </View>
-                        <Text>0.2 km</Text>                        
+                        <Text>{order?.distance} Km </Text>                        
                     </View> 
-                    <Text style={styles.bottomText}>Picking up {order.user.name}</Text>
+                    <Text style={styles.bottomText}>{order.user.name} On Station</Text>
+                </View>           
+            )
+        }
+
+        if(order) {
+            return(
+                <View style={{alignItems: 'center'}}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <Text>{order?.duration} Mins </Text>
+                        <View style={{
+                            backgroundColor: 'orange', 
+                            marginHorizontal: 10,
+                            width: 30,
+                            height: 30,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderRadius: 20,
+                            }}>
+                            <FontAwesome name={"user"} color={'white'} size={20} />
+                        </View>
+                        <Text>{order?.distance} Km </Text>                        
+                    </View> 
+                    <Text style={styles.bottomText}>{order.user.name} Arriving to VS</Text>
                 </View>           
             )
         }
@@ -154,10 +221,10 @@ const HomeScreen = () => {
                 latitude: location?.coords.latitude,
                 longitude: location?.coords.longitude,
             }}
-            destination={{
-             latitude: order.originLatitude,
-             longitude: order.originLongitude,
-            }}
+            destination={getDestination()}
+            /* latitude: order.originLatitude,
+             longitude: order.originLongitude, */
+            onReady={result => onDirectionFound(result)}
             apikey={GOOGLE_MAPS_APIKEY}
             strokeWidth={5}
             strokeColor="black"
