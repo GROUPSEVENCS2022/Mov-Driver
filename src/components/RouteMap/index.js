@@ -10,12 +10,12 @@ const RouteMap = ({ origin, destination }) => {
   const GOOGLE_MAPS_APIKEY = 'AIzaSyDytX2Y8BTCdtT0iOsKcPX_CFHGCpiuT9E';
 
  const originT = {
-    latitude: 0.3354670642213976,
-  longitude: 32.56427878879299,
+    latitude: 0.3354670642213954,
+  longitude: 32.55427878879218,
   }
   const destinationT = {
     latitude: 0.3380312117705973, 
-    longitude: 32.58558057195873,
+    longitude: 32.59558057195873,
   }
 
 

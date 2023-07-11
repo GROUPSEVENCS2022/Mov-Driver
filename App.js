@@ -7,6 +7,10 @@ import * as Location from 'expo-location';
 import PoolsScreen from './src/screens/PoolsScreen';
 import PoolStatusScreen from './src/screens/PoolStatusScreen';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
 
 const App = () => {
 
@@ -34,15 +38,22 @@ const App = () => {
     text = JSON.stringify(location);
   } */
 
-  return (
-    <>
-    <NavigationContainer>
-    {/* <StatusBar style="auto" />
+  {/* <StatusBar style="auto" />
     <SafeAreaView> */}
       {/* <HomeScreen></HomeScreen> */}
       {/* <PoolsScreen></PoolsScreen> */}
-      <PoolStatusScreen></PoolStatusScreen>
-    {/* </SafeAreaView> */}
+      {/* </SafeAreaView> */}
+
+  return (
+    <>
+    <NavigationContainer>
+      <Stack.Navigator> 
+        <Stack.Screen name="Home" component={HomeScreen} />   
+        <Stack.Screen name="PoolsScreen" component={PoolsScreen} />  
+        <Stack.Screen name="PoolStatusScreen" component={PoolStatusScreen} />  
+        {/* <Stack.Screen name="Pool" component={PoolsScreen} />  */}  
+        {/* <PoolStatusScreen></PoolStatusScreen> */}
+      </Stack.Navigator>   
     </NavigationContainer>
     </>
     

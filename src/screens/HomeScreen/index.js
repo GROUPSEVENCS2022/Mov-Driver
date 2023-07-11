@@ -11,7 +11,11 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import * as Location from 'expo-location';
 import Geo from '../../components/Geo';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
+
+    const goToPoolsScreen = () => {
+        navigation.navigate('PoolsScreen');
+      };
 
     /* USER LOCATION START */
     const [location, setLocation] = useState(null);
@@ -234,7 +238,7 @@ const HomeScreen = () => {
         </MapView>
 
         <Pressable 
-            onPress={() => console.warn('pool')} 
+            onPress={goToPoolsScreen}
             style={styles.poolButton}>
             <Text style={styles.poolText}>
                 <Text>5 / 14 <Entypo name={"user"} size={24} color="#fafafa"/></Text>

@@ -1,0 +1,52 @@
+{
+  "commuters": [
+    {
+      "name": "Benard",
+      "origin": "Nakawa",
+      "destination": "City Square",
+      "status": "Arriving"
+    },
+    {
+      "name": "Peter",
+      "origin": "Nakawa",
+      "destination": "Wandegeya",
+      "status": "Onboard"
+    },
+    {
+      "name": "Commuter 3",
+      "origin": "Nakawa",
+      "destination": "Nakulabye",
+      "status": "Onboard"
+    },
+    {
+      "name": "Commuter 4",
+      "origin": "Nakawa",
+      "destination": "Kasubi",
+      "status": "Onboard"
+    },
+    {
+      "name": "Musoke",
+      "origin": "Nakawa",
+      "destination": "Kawala",
+      "status": "Onboard"
+    },
+    {
+      "name": "Kayiwa",
+      "origin": "Nakawa",
+      "destination": "City Square",
+      "status": "Onboard"
+    }
+  ],
+  "cars": [],
+  "rides": [],
+  "pools": [
+    {
+      "name": "Bweyogerere-Banda",
+      "origin": "city-square",
+      "destination": "Bweyogerere",
+      "price": 3000,
+      "type": "Normal",
+      "id": 1
+    }
+  ]
+}

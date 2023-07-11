@@ -2,8 +2,31 @@ import React, { useState } from 'react';
 import { View, TextInput, Text, Pressable } from 'react-native';
 import styles from './styles';
 import DropDownPicker from 'react-native-dropdown-picker';
+import axios from 'axios';
 
-const PoolsScreen = () => {
+const PoolsScreen = ({ navigation }) => {
+
+  const newPool = {
+    name: 'Bweyogerere-Banda',
+    origin: 'city-square',
+    destination: 'Bweyogerere',
+    price: 3000,
+    type: 'Normal',
+  }
+
+  const goToPoolStatusScreen = () => {
+
+      axios.post('http://192.168.1.173:3000/pools', newPool)
+    .then(response => {
+      console.log('Pool created successfully');
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  
+      navigation.navigate('PoolStatusScreen');
+    };
+
     const [name, setName] = useState('');
     const [origin, setOrigin] = useState('');
     const [destination, setDestination] = useState('');
@@ -82,7 +105,7 @@ const PoolsScreen = () => {
               dropDownStyle={styles.dropdownList}
               onChangeItem={(item) => setSelectedType(item.value)}
             />
-            <Pressable onPress={handleSubmit} style={styles.button}>
+            <Pressable onPress={goToPoolStatusScreen} style={styles.button}>
               <Text style={styles.buttonText}>create pool</Text>
             </Pressable>
             {/* <Button title="Submit" onPress={handleSubmit} /> */}

@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         height: 600,
       },
       bottomDashboard: {
-        height: 250,
+        height: 300,
         padding: 20,
         flexDirection: 'row',
       },

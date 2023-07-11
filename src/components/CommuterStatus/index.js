@@ -1,97 +1,80 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View,Pressable, Modal } from "react-native";
 import styles from "./styles";
+import axios from 'axios';
 
-const commuters = [
+
+/* const commuters = [
   {
-    name: 'Commuter 1',
+    name: 'Patricia',
     origin: 'Nakawa',
     destination: 'City Square',
     status: 'Arriving',
   },
   {
-    name: 'Commuter 2',
+    name: 'Marcus',
     origin: 'Nakawa',
     destination: 'Wandegeya',
     status: 'Onboard',
   },
   {
-    name: 'Commuter 3',
+    name: 'Mugerwa',
     origin: 'Nakawa',
     destination: 'Nakulabye',
     status: 'Onboard',
   },
   {
-    name: 'Commuter 4',
+    name: 'Ruth',
     origin: 'Nakawa',
     destination: 'Kasubi',
     status: 'Onboard',
   },
   {
-    name: 'Commuter 5',
+    name: 'Mabel',
     origin: 'Nakawa',
     destination: 'Kawala',
     status: 'Onboard',
   },
   {
-    name: 'Commuter 6',
+    name: 'Mugisha',
     origin: 'Nakawa',
-    destination: 'City Square',
+    destination: 'Kasubi',
     status: 'Onboard',
   },
   {
-    name: 'Commuter 7',
+    name: 'Kato',
+    origin: 'Nakawa',
+    destination: 'Kawala',
+    status: 'Arriving',
+  },
+  {
+    name: 'Adrone',
     origin: 'Nakawa',
     destination: 'Wandegeya',
     status: 'Onboard',
   },
-  {
-    name: 'Commuter 8',
-    origin: 'Nakawa',
-    destination: 'Nakulabye',
-    status: 'Arriving',
-  },
-  {
-    name: 'Commuter 9',
-    origin: 'Nakawa',
-    destination: 'Kasubi',
-    status: 'Onboard',
-  },
-  {
-    name: 'Commuter 10',
-    origin: 'Nakawa',
-    destination: 'Kawala',
-    status: 'Arriving',
-  },
-  {
-    name: 'Commuter 11',
-    origin: 'Nakawa',
-    destination: 'Wandegeya',
-    status: 'Onboard',
-  },
-  {
-    name: 'Commuter 12',
-    origin: 'Nakawa',
-    destination: 'Nakulabye',
-    status: 'Arriving',
-  },
-  {
-    name: 'Commuter 13',
-    origin: 'Nakawa',
-    destination: 'Kasubi',
-    status: 'Onboard',
-  },
-  {
-    name: 'Commuter 14',
-    origin: 'Nakawa',
-    destination: 'Kawala',
-    status: 'Arriving',
-  },
-];
-
-
+]; */
 
 const CommuterStatus = () => {
+
+const [commuters, setCommuters] = useState([]);
+
+  /* useEffect(() => {
+    fetch('http://192.168.1.173:3000/commuters')
+      .then((response) => response.json())
+      .then((data) => setCommuters(data))
+      .catch((error) => console.error(error));
+  }, []); */
+
+  useEffect(() => {
+    axios.get('http://192.168.1.173:3000/commuters')
+      .then(response => {
+        setCommuters(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -102,6 +85,7 @@ const CommuterStatus = () => {
           <Text style={styles.commuterName}>{commuter.name}</Text>
           <Text style={styles.commuterDetails}>
             Origin: {commuter.origin} | Destination: {commuter.destination} | Status: {commuter.status}
+            {console.log(commuters)}
           </Text>
         </View>
       </Pressable>
