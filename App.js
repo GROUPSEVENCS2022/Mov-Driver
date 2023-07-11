@@ -8,6 +8,9 @@ import PoolsScreen from './src/screens/PoolsScreen';
 import PoolStatusScreen from './src/screens/PoolStatusScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import SignUpScreen from './src/components/Auth/SignUp';
+import SigninScreen from './src/components/Auth/Signin';
+import Cars from './src/components/Cars';
 
 const Stack = createStackNavigator();
 
@@ -43,18 +46,23 @@ const App = () => {
       {/* <HomeScreen></HomeScreen> */}
       {/* <PoolsScreen></PoolsScreen> */}
       {/* </SafeAreaView> */}
+       {/* <Stack.Screen name="PoolsScreen" component={PoolsScreen} />  
+        <Stack.Screen name="PoolStatusScreen" component={PoolStatusScreen} />  */} 
+        {/* <Stack.Screen name="Pool" component={PoolsScreen} />  */}  
+        {/* <PoolStatusScreen></PoolStatusScreen> */}
+      {/**/} 
 
   return (
     <>
+      
+      {/* <SigninScreen /> */}
     <NavigationContainer>
       <Stack.Navigator> 
-        <Stack.Screen name="Home" component={HomeScreen} />   
-        <Stack.Screen name="PoolsScreen" component={PoolsScreen} />  
-        <Stack.Screen name="PoolStatusScreen" component={PoolStatusScreen} />  
-        {/* <Stack.Screen name="Pool" component={PoolsScreen} />  */}  
-        {/* <PoolStatusScreen></PoolStatusScreen> */}
+       <Stack.Screen name="Sign Up" component={SignUpScreen} />  
+       <Stack.Screen name="Sign In" component={SigninScreen} />
+       <Stack.Screen name="Cars" component={Cars} />
       </Stack.Navigator>   
-    </NavigationContainer>
+    </NavigationContainer> 
     </>
     
   );

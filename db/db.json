@@ -1,4 +1,78 @@
 {
+  "signup": [],
+  "signin": [
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 1
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 2
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 3
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 4
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 5
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 6
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 7
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 8
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test",
+      "id": 9
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 10
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 11
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 12
+    }
+  ],
+  "drivers": [
+    {
+      "firstName": "Martin",
+      "lastName": "Kato",
+      "email": "joramgranger@gmail.com",
+      "phoneNumber": "0777000111",
+      "driversLicense": "HG10",
+      "password": "test1234",
+      "id": 1
+    }
+  ],
   "commuters": [
     {
       "name": "Benard",
