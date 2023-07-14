@@ -11,11 +11,47 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import * as Location from 'expo-location';
 import Geo from '../../components/Geo';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ navigation, route }) => {
+
+    // user management
+    const { user } = route.params;
+    const [activeUser, setActiveUser] = useState({});
+
+    // Fetch additional user data using the email
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        // Make API call to fetch additional user data
+        const response = await fetch(`http://192.168.1.173:3000/drivers?email=${user.email}`);
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch user data');
+        }
+
+        const userData = await response.json();
+
+        // Update the user object with additional data
+        setActiveUser(userData);
+
+        // Use the updated user object as needed
+        console.log(activeUser);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUserData();
+  }, [user.email]);
+
+  // navigation to other screens
 
     const goToPoolsScreen = () => {
-        navigation.navigate('PoolsScreen');
+        navigation.navigate('PoolsScreen', { activeUser });
       };
+
+    const goToCarsScreen = () => {
+        navigation.navigate('CarsScreen', { activeUser });
+    };
 
     /* USER LOCATION START */
     const [location, setLocation] = useState(null);
@@ -198,9 +234,9 @@ const HomeScreen = ({ navigation }) => {
             )
         }
         if(isOnLine) {
-            return (<Text style={styles.bottomText}>Mov is Online</Text>);
+            return (<Text style={styles.bottomText}>Mov is offline</Text>);
         }
-        return (<Text style={styles.bottomText}>Mov is Offline</Text>);
+        return (<Text style={styles.bottomText}>Mov is online</Text>);
     }
 
 
@@ -208,7 +244,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View>
         <MapView
-        style={{width: '100%', height: Dimensions.get('window').height - 110}}
+        style={{width: '100%', height: Dimensions.get('window').height - 200}}
         provider={PROVIDER_GOOGLE}
         showUserLocation={true}
         onUserLocationChange={onUserLocationChange()}
@@ -247,9 +283,10 @@ const HomeScreen = ({ navigation }) => {
         </Pressable>
 
         <Pressable 
-            onPress={() => console.warn('mov')} 
+            onPress={goToCarsScreen} 
             style={[styles.roundButton, {top: 40, left: 10}]}>
-            <Entypo name={"add-user"} size={24} color="#4a4a4a"/>
+            {/* <Entypo name={""} size={24} color="#4a4a4a"/> */}
+            <FontAwesome name={"car"} size={24} color="#4a4a4a"/>
         </Pressable>
 
         <Pressable 

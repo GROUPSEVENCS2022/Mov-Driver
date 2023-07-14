@@ -15,51 +15,6 @@
       "email": "joramgranger@gmail.com",
       "password": "test1234",
       "id": 3
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 4
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 5
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 6
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 7
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 8
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test",
-      "id": 9
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 10
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 11
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 12
     }
   ],
   "drivers": [
@@ -111,7 +66,19 @@
       "status": "Onboard"
     }
   ],
-  "cars": [],
+  "cars": [
+    {
+      "type": "Mov-Normal",
+      "brand": "Toyota ",
+      "email": "joramgranger@gmail.com",
+      "plateNo": "UBA700D",
+      "dateOfCreation": 1689341452588,
+      "status": "on station",
+      "latitude": "",
+      "longitude": "",
+      "id": 1
+    }
+  ],
   "rides": [],
   "pools": [
     {
@@ -121,6 +88,14 @@
       "price": 3000,
       "type": "Normal",
       "id": 1
+    },
+    {
+      "name": "Bweyogerere-Banda",
+      "origin": "city-square",
+      "destination": "Bweyogerere",
+      "price": 3000,
+      "type": "Normal",
+      "id": 2
     }
   ]
 }

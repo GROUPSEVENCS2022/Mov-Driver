@@ -11,6 +11,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SignUpScreen from './src/components/Auth/SignUp';
 import SigninScreen from './src/components/Auth/Signin';
 import Cars from './src/components/Cars';
+import CommuterStatus from './src/components/CommuterStatus';
+import CarsScreen from './src/screens/CarsScreen';
 
 const Stack = createStackNavigator();
 
@@ -60,7 +62,9 @@ const App = () => {
       <Stack.Navigator> 
        <Stack.Screen name="Sign Up" component={SignUpScreen} />  
        <Stack.Screen name="Sign In" component={SigninScreen} />
-       <Stack.Screen name="Cars" component={Cars} />
+       <Stack.Screen name="HomeScreen" component={HomeScreen} />
+       <Stack.Screen name="PoolsScreen" component={PoolsScreen} />
+       <Stack.Screen name="CarsScreen" component={CarsScreen} />
       </Stack.Navigator>   
     </NavigationContainer> 
     </>

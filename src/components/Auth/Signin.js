@@ -41,7 +41,7 @@ const SignInScreen = ({ navigation }) => {
 
       const user = await response.json();
 
-      navigation.navigate('Cars', { user });
+      navigation.navigate('HomeScreen', { user });
     } catch (error) {
       setError(error.message);
     } finally {
