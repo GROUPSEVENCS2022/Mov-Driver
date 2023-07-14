@@ -15,6 +15,11 @@
       "email": "joramgranger@gmail.com",
       "password": "test1234",
       "id": 3
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 4
     }
   ],
   "drivers": [

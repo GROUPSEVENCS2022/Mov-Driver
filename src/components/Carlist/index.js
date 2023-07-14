@@ -23,11 +23,12 @@ const CarList = ({email}) => {
   return (
     <View style={styles.carItemContainer}>
     {carData[0] && <Image source={require('../../assets/images/mov-Normal.png')} style={styles.carImage} />}
-    <View style={[styles.statusIndicator, { backgroundColor: getStatusBackgroundColor(carData[0].status) }]} />
+    <View style={[styles.statusIndicator, { backgroundColor: getStatusBackgroundColor(carData[0]?.status) }]} />
     <View style={styles.carDetails}>
-      <Text style={styles.carBrand}>{carData[0].brand}</Text>
-      <Text style={styles.carModel}>{carData[0].model}</Text>
-      <Text style={styles.carPlate}>{carData[0].plate}</Text>
+      <Text style={styles.carBrand}>{carData[0]?.brand}</Text>
+      <Text style={styles.carModel}>{carData[0]?.model}</Text>
+      <Text style={styles.carPlate}>{carData[0]?.plateNo}</Text>
+      <Text style={styles.carPlate}>{carData[0]?.status}</Text>
     </View>
   </View>
   );
