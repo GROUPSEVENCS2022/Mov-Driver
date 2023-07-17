@@ -1,38 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, TextInput, Text, Pressable } from 'react-native';
 import styles from './styles';
 import DropDownPicker from 'react-native-dropdown-picker';
 import axios from 'axios';
+import PoolStatus from '../../components/PoolStatus';
 
-const PoolsScreen = ({ navigation }) => {
+const PoolsScreen = ({ navigation, route }) => {
 
-  const newPool = {
-    name: 'Bweyogerere-Banda',
-    origin: 'city-square',
-    destination: 'Bweyogerere',
-    price: 3000,
-    type: 'Normal',
-  }
-
-  const goToPoolStatusScreen = () => {
-
-      axios.post('http://192.168.1.173:3000/pools', newPool)
-    .then(response => {
-      console.log('Pool created successfully');
-    })
-    .catch(error => {
-      console.log(error);
-    });
+  // user management
+  const { activeUser } = route.params;
+  const activeDriver = activeUser;
+  const [activeCar, setActiveCar] = useState({});
+  const [activePool, setActivePool] = useState({});
+ 
   
-      navigation.navigate('PoolStatusScreen');
+
+  // car management
+  // Fetch car data using the email
+  useEffect(() => {
+    const fetchCarData = async () => {
+      try {
+        // Make API call to fetch additional user data
+        const response = await fetch(`http://192.168.1.173:3000/cars?email=${userEmail}`);
+
+        if (!response.ok) {
+          throw new Error('Car check error');
+        }
+
+        const carData = await response.json();
+        setActiveCar(carData);
+
+        // Use the updated user object as needed
+        console.log(activeCar);
+      } catch (error) {
+        console.error(error);
+      }
     };
 
-    const [name, setName] = useState('');
-    const [origin, setOrigin] = useState('');
-    const [destination, setDestination] = useState('');
-    const [price, setPrice] = useState('');
-    const [selectedType, setSelectedType] = useState('Mov-Normal');
+    fetchCarData();
+  }, [userEmail]);
 
+  const carType = activeCar[0]?.type;
+
+  // pool management
+  const [name, setName] = useState('');
+  const [origin, setOrigin] = useState('');
+  const [destination, setDestination] = useState('');
+  const [price, setPrice] = useState('');
+  const [type, setType] = useState('');
   
     const handleNameChange = (text) => {
       setName(text);
@@ -46,21 +61,111 @@ const PoolsScreen = ({ navigation }) => {
     const handlePriceChange = (text) => {
         setPrice(text);
     };
-    const handleTypeChange = (text) => {
-        setSelectedType(text);
-    };
+    const handleTypeChange = (carType) => {
+        setType(carType);
+    }; 
     
+    // participance
+    const userEmail = activeUser[0]?.email;
+  const firstName = activeUser[0]?.firstName;
+  const lastName = activeUser[0]?.lastName;
+  const phoneNumber = activeUser[0]?.phoneNumber;
+  const driversLicense = activeUser[0]?.driversLicense;
+  const plateNo = activeCar[0]?.plateNo;
   
     const handleSubmit = () => {
       // Perform form submission logic here
-      console.log('Name:', name);
-      console.log('Origin:', origin);
-      console.log('Destination:', destination);
-      console.log(':Price', price);
-      console.log(':Type', type);
+
+      const timestamp = new Date().getTime();
+      const latitude = '';
+      const longitude = '';
+
+      // new pool
+      const newPoolData = {
+        name: name,
+        origin: origin,
+        destination: destination,
+        masterDriver: userEmail,
+        participants: [{userEmail, firstName, lastName, phoneNumber, driversLicense, plateNo}],
+        commuters: 0,
+        price: price,
+        distance: distanceCalculator(),
+      }
+
+      // Send form data to JSON server
+    axios.post('http://192.168.1.173:3000/pools', newPoolData)
+    .then(response => {
+      console.log('pool created successfully:');
+    })
+    .catch(error => {
+      console.error('Error submitting data:', error);
+    });
+
+    // clear form inputs
+    setName('');
+    setOrigin('');
+    setDestination('');
+    setType('');
+    setPrice('');
+
+    
+
+      // goToPoolStatusScreen();
+    };
+
+    // screen navigation
+    const goToPoolStatusScreen = () => { 
+      navigation.navigate('Pool');
+    }; 
+    
+    // distance calculator.
+    const distanceCalculator = () => {
+      // Generate a random number between 0 and 1
+      const random = Math.random();
+  
+      // Scale the random number to the desired range
+      const min = 4;
+      const max = 20;
+      const scaledRandom = Math.floor(random * (max - min + 1)) + min;
+  
+      // Display the generated random number
+      console.log(scaledRandom);
+      return scaledRandom;
+    };
+
+    // fetch existing pool
+  // fetch pool data
+  useEffect(() => {
+    const fetchPoolData = async () => {
+      try {
+        // Make API call to fetch pool data
+        const response = await fetch(`http://192.168.1.173:3000/pools`);
+      
+        if (!response.ok) {
+          throw new Error('pool check error');
+        }
+      
+        const poolData = await response.json();
+        setActivePool(poolData);
+      
+        // Use the updated pool object as needed
+        console.log(activePool);
+      } catch (error) {
+        console.error(error);
+      }
     };
   
+    fetchPoolData();
+  }, [])
+
+
+  
     return (
+      <>
+      { activePool[0]?.name 
+      ? 
+      <PoolStatus activePool={activePool}/> 
+      : 
       <View style={styles.container}>
         <View style={styles.inputContainer}>
             <Text style={styles.title}>NEW POOL</Text>
@@ -88,29 +193,28 @@ const PoolsScreen = ({ navigation }) => {
             <Text style={styles.labels}>Price</Text>
             <TextInput
               style={styles.input}
+              keyboardType="numeric"
               placeholder="Price"
               value={price}
               onChangeText={handlePriceChange}
             />
             <Text style={styles.labels}>Type</Text>
-            <DropDownPicker
-              items={[
-                { label: 'Mov-Normal', value: 'Mov Normal' },
-                { label: 'Mov-Shuttle', value: 'Mov Shuttle' },
-                { label: 'Mov-XL', value: 'Mov XL' },
-              ]}
-              defaultValue={selectedType}
-              containerStyle={styles.dropdownContainer}
-              style={styles.dropdown}
-              dropDownStyle={styles.dropdownList}
-              onChangeItem={(item) => setSelectedType(item.value)}
+            <TextInput
+              style={[styles.input, {backgroundColor: '#d0d0d0'}]}
+              value={type}
+              editable={false}
+              placeholder={carType}
+              onChangeText={handleTypeChange}              
             />
-            <Pressable onPress={goToPoolStatusScreen} style={styles.button}>
+            <Pressable onPress={handleSubmit} style={styles.button}>
               <Text style={styles.buttonText}>create pool</Text>
             </Pressable>
             {/* <Button title="Submit" onPress={handleSubmit} /> */}
         </View>
       </View>
+      }
+      </>
+      
     );
   };
 

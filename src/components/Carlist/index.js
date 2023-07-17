@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
 import axios from 'axios';
+import styles from './styles';
+
+
 
 const CarList = ({email}) => {
     const activeEmail = email;
   const [carData, setCarData] = useState([]);
+
+    // Function to get the background color based on car status
+
 
   useEffect(() => {
     fetchData();
@@ -20,82 +26,29 @@ const CarList = ({email}) => {
       });
   };
 
+  const getBackgroundColor = (status) => {
+    switch (status) {
+      case 'on station':
+        return 'red'; // Green color for "On Station" status
+      case 'on trip':
+        return 'green'; // Orange color for "On Trip" status
+      case 'loading':
+        return 'orange'; // Red color for "Unavailable" status
+      default:
+        return '#f0f0f0'; // Default color for unknown status
+    }
+  }
+
   return (
-    <View style={styles.carItemContainer}>
-    {carData[0] && <Image source={require('../../assets/images/mov-Normal.png')} style={styles.carImage} />}
-    <View style={[styles.statusIndicator, { backgroundColor: getStatusBackgroundColor(carData[0]?.status) }]} />
-    <View style={styles.carDetails}>
-      <Text style={styles.carBrand}>{carData[0]?.brand}</Text>
-      <Text style={styles.carModel}>{carData[0]?.model}</Text>
-      <Text style={styles.carPlate}>{carData[0]?.plateNo}</Text>
-      <Text style={styles.carPlate}>{carData[0]?.status}</Text>
+    <View style={styles.container}>
+      <Image source={require('../../assets/images/mov-Shuttle.png')} style={styles.carImage} />
+      <Text style={styles.infoText}>License Plate: {carData[0]?.plateNo}</Text>
+      <Text style={styles.infoText}>Model: {carData[0]?.brand}</Text>
+      <View style={[styles.statusIndicator, { backgroundColor: getBackgroundColor(carData[0]?.status) }]}>
+        <Text style={styles.infoText}>Model: {carData[0]?.status}</Text>
+      </View>
     </View>
-  </View>
   );
 };
-
-const getStatusBackgroundColor = (status) => {
-  switch (status) {
-    case 'on station':
-      return 'orange';
-    case 'on trip':
-      return 'green';
-    default:
-      return 'red';
-  }
-};
-
-const getImagePath = (type) => {
-    switch (type) {
-      case 'Mov-Normal':
-        return '../../assets/images/mov-Normal.png';
-      case 'Mov-Shuttle':
-        return '../../assets/images/mov-Shuttle.png';
-      case 'Mov-XL':
-        return '../../assets/images/mov-XL.png';
-      default:
-        return '../../assets/images/mov-Normal.png';
-    }
-  };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    padding: 20,
-  },
-  carItemContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  carImage: {
-    width: 80,
-    height: 80,
-    marginRight: 10,
-    borderRadius: 8,
-  },
-  statusIndicator: {
-    width: 16,
-    height: 16,
-    borderRadius: 8,
-    marginRight: 10,
-  },
-  carDetails: {
-    flex: 1,
-  },
-  carBrand: {
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  carModel: {
-    fontSize: 14,
-    marginBottom: 4,
-  },
-  carPlate: {
-    fontSize: 12,
-    color: 'gray',
-  },
-});
 
 export default CarList;

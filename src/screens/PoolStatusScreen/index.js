@@ -11,11 +11,15 @@ import PoolStatus from '../../components/PoolStatus';
 
 const Tab = createMaterialTopTabNavigator();
 
-const PoolStatusScreen = () => {
-
+const PoolStatusScreen = ({ navigation, route }) => {
   
+    // user management
+    const { activePool } = route.params;
     return (
         <Tab.Navigator
+            screenOptions={({ route }) => ({
+              initialParams: route.name === 'Pool' ? activePool : null,
+            })}
             tabBarOptions={{
                 style: {
                   paddingTop: 12,

@@ -1,11 +1,44 @@
-import React from "react";
+import { useState, useEffect } from 'react';
 import { Text, View, Dimensions} from "react-native";
 import styles from "./styles";
 import RouteMap from "../RouteMap";
 
 
 
-const PoolStatus = () => {
+const PoolStatus = ({ activePool }) => {
+
+  /* const [activePool, setActivePool] = useState({});
+
+  // fetch pool data
+  useEffect(() => {
+    const fetchPoolData = async () => {
+      try {
+        // Make API call to fetch pool data
+        const response = await fetch(`http://192.168.1.173:3000/pools`);
+      
+        if (!response.ok) {
+          throw new Error('pool check error');
+        }
+      
+        const poolData = await response.json();
+        setActivePool(poolData);
+      
+        // Use the updated pool object as needed
+        console.log(activePool);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchPoolData();
+  }, []); */
+
+  // 
+
+
+
+ 
+
 
   const originT = {
     latitude: 0.3354670642213976,
@@ -15,6 +48,8 @@ const PoolStatus = () => {
     latitude: 0.3380312117705973, 
     longitude: 32.58558057195873,
   }
+
+  console.log(activePool[0].participants);
 
 
   
@@ -36,13 +71,13 @@ const PoolStatus = () => {
             <Text style={styles.bottomDashboardTitle}>Round Distance:</Text>
           </View>
           <View style={{marginLeft: 40}}>
-            <Text style={styles.bottomDashboardSpecifics}>Kasubi/Kawala</Text>
-            <Text style={styles.bottomDashboardSpecifics}>Nakawa</Text>
-            <Text style={styles.bottomDashboardSpecifics}>Namungona</Text>
-            <Text style={styles.bottomDashboardSpecifics}>4</Text>
-            <Text style={styles.bottomDashboardSpecifics}>5/14</Text>
-            <Text style={styles.bottomDashboardSpecifics}>3000 UGX</Text>
-            <Text style={styles.bottomDashboardSpecifics}>9 Km</Text>
+            <Text style={styles.bottomDashboardSpecifics}>{activePool[0]?.name}</Text>
+            <Text style={styles.bottomDashboardSpecifics}>{activePool[0]?.origin}</Text>
+            <Text style={styles.bottomDashboardSpecifics}>{activePool[0]?.destination}</Text>
+            <Text style={styles.bottomDashboardSpecifics}>{activePool[0]?.participants.length}</Text>
+            <Text style={styles.bottomDashboardSpecifics}>{activePool[0]?.commuters}</Text>
+            <Text style={styles.bottomDashboardSpecifics}>{activePool[0]?.price}</Text>
+            <Text style={styles.bottomDashboardSpecifics}>{activePool[0]?.distance} Km</Text>
           </View>
         </View>        
       </View>        

@@ -13,6 +13,9 @@ import SigninScreen from './src/components/Auth/Signin';
 import Cars from './src/components/Cars';
 import CommuterStatus from './src/components/CommuterStatus';
 import CarsScreen from './src/screens/CarsScreen';
+import PoolStatus from './src/components/PoolStatus';
+import ParticipantStatus from './src/screens/ParticipantScreen';
+
 
 const Stack = createStackNavigator();
 
@@ -65,6 +68,7 @@ const App = () => {
        <Stack.Screen name="HomeScreen" component={HomeScreen} />
        <Stack.Screen name="PoolsScreen" component={PoolsScreen} />
        <Stack.Screen name="CarsScreen" component={CarsScreen} />
+       <Stack.Screen name="ParticipantStatus" component={ParticipantStatus} />
       </Stack.Navigator>   
     </NavigationContainer> 
     </>

@@ -20,6 +20,11 @@
       "email": "joramgranger@gmail.com",
       "password": "test1234",
       "id": 4
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 5
     }
   ],
   "drivers": [
@@ -87,20 +92,32 @@
   "rides": [],
   "pools": [
     {
-      "name": "Bweyogerere-Banda",
-      "origin": "city-square",
-      "destination": "Bweyogerere",
-      "price": 3000,
-      "type": "Normal",
+      "name": "Salama road",
+      "origin": "Kibuye ",
+      "destination": "Munyonyo",
+      "masterDriver": "joramgranger@gmail.com",
+      "participants": [
+        {
+          "userEmail": "joramgranger@gmail.com",
+          "firstName": "Martin",
+          "lastName": "Kato",
+          "phoneNumber": "0777000111",
+          "driversLicense": "HG10",
+          "plateNo": "UBA700D"
+        },
+        {
+          "userEmail": "joramgranger@outlook.com",
+          "firstName": "Martin",
+          "lastName": "Kato",
+          "phoneNumber": "0777000111",
+          "driversLicense": "HG10",
+          "plateNo": "UBA700D"
+        }
+      ],
+      "commuters": 0,
+      "price": "4000",
+      "distance": 14,
       "id": 1
-    },
-    {
-      "name": "Bweyogerere-Banda",
-      "origin": "city-square",
-      "destination": "Bweyogerere",
-      "price": 3000,
-      "type": "Normal",
-      "id": 2
     }
   ]
 }

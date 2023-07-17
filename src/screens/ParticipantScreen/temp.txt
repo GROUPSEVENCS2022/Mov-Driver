@@ -1,0 +1,32 @@
+{participants && participants.map((p, index) => (
+    <Pressable key={index} style={styles.participantItem} onPress={() => handlePress(p)}>
+      <Text style={styles.driverName}>{p?.firstName}</Text>
+      <Text style={styles.driverName}>{p?.lastName}</Text>
+      <Text>Car Plate Number: {p?.plateNo}</Text>
+      <Text>Phone Number: {p?.phoneNumber}</Text>
+      {/* <Text>Type: {participant.type}</Text> */}
+      {/* <Text>Status: {participant.status}</Text> */}
+    </Pressable>
+  ))}
+
+  <Modal visible={selectedParticipant !== null} animationType="slide" transparent>
+    <View style={styles.modalContainer}>
+      <View style={styles.modalContent}>
+        {selectedParticipant && (
+          <>
+            <Text style={styles.modalTitle}>Driver Name: {selectedParticipant?.firstName}</Text>
+            <Text style={styles.modalTitle}>Driver Name: {selectedParticipant?.lastName}</Text>
+            <Text>License Plate Number: {selectedParticipant.plateNo}</Text>
+            <Text>Type: Mov-Normal</Text>
+            <Text>Status: on station</Text>
+            <Text>Capacity: 14</Text>
+            <Text>Phone Number: {selectedParticipant?.phoneNumber}</Text>
+            <Text>Email: {selectedParticipant?.userEmail}</Text>
+          </>
+        )}
+        <Pressable style={styles.modalCloseButton} onPress={handleClose}>
+          <Text style={styles.modalCloseButtonText}>Close</Text>
+        </Pressable>
+      </View>
+    </View>
+  </Modal>

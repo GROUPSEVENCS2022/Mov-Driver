@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         justifyContent: 'center',
         alignItems: 'center',
-        top: 50,
+        top: 10,
         borderColor: 'red',
         height: 600,
       },
@@ -62,6 +62,12 @@ const styles = StyleSheet.create({
       buttonText: {
         color: 'white',
         fontSize: 30,
+      },
+      disabledInput: {
+        backgroundColor: '#f2f2f2',
+        color: '#999999',
+        padding: 10,
+        fontSize: 16,
       },
 });
 
