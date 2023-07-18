@@ -25,15 +25,20 @@
       "email": "joramgranger@gmail.com",
       "password": "test1234",
       "id": 5
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 6
     }
   ],
   "drivers": [
     {
-      "firstName": "Martin",
-      "lastName": "Kato",
+      "firstName": "Adrone",
+      "lastName": "Mickie",
       "email": "joramgranger@gmail.com",
       "phoneNumber": "0777000111",
-      "driversLicense": "HG10",
+      "driversLicense": "DL008",
       "password": "test1234",
       "id": 1
     }
@@ -79,44 +84,38 @@
   "cars": [
     {
       "type": "Mov-Normal",
-      "brand": "Toyota ",
+      "brand": "Toyota",
       "email": "joramgranger@gmail.com",
-      "plateNo": "UBA700D",
-      "dateOfCreation": 1689341452588,
+      "plateNo": "UBA700A",
+      "dateOfCreation": 1689618057256,
       "status": "on station",
-      "latitude": "",
-      "longitude": "",
+      "latitude": "0.3354670642213976",
+      "longitude": "32.56427878879299",
+      "passengers": 0,
+      "heading": 0,
       "id": 1
     }
   ],
   "rides": [],
   "pools": [
     {
-      "name": "Salama road",
-      "origin": "Kibuye ",
-      "destination": "Munyonyo",
+      "name": "Entebbe road",
+      "origin": "Pioneer mall",
+      "destination": "Entebbe",
       "masterDriver": "joramgranger@gmail.com",
       "participants": [
         {
           "userEmail": "joramgranger@gmail.com",
-          "firstName": "Martin",
-          "lastName": "Kato",
+          "firstName": "Adrone",
+          "lastName": "Mickie",
           "phoneNumber": "0777000111",
-          "driversLicense": "HG10",
-          "plateNo": "UBA700D"
-        },
-        {
-          "userEmail": "joramgranger@outlook.com",
-          "firstName": "Martin",
-          "lastName": "Kato",
-          "phoneNumber": "0777000111",
-          "driversLicense": "HG10",
-          "plateNo": "UBA700D"
+          "driversLicense": "DL008",
+          "plateNo": "UBA700A"
         }
       ],
       "commuters": 0,
       "price": "4000",
-      "distance": 14,
+      "distance": 5,
       "id": 1
     }
   ]

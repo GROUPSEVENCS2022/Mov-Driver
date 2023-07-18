@@ -29,6 +29,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 8,
         borderRadius: 5,
       },
+      disabledInput: {
+        backgroundColor: '#f2f2f2',
+        color: '#999999',
+        padding: 10,
+        fontSize: 16,
+      },
       labels: {
         fontSize: 15,
         color: 'black',
@@ -63,12 +69,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 30,
       },
-      disabledInput: {
-        backgroundColor: '#f2f2f2',
-        color: '#999999',
-        padding: 10,
-        fontSize: 16,
-      },
+      
 });
 
 export default styles

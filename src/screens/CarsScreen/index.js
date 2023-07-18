@@ -86,8 +86,8 @@ const CarsScreen = ({ navigation, route }) => {
   const handleAddCar = () => {
     const timestamp = new Date().getTime(); // Get current timestamp
     const status = 'on station'; // Default status
-    const latitude = '';
-    const longitude = '';
+    const latitude = '0.3354670642213976';
+    const longitude = '32.56427878879299';
     // Handle the logic for adding the car to your data source
     const newCarData = {
         type: carType,
@@ -98,6 +98,8 @@ const CarsScreen = ({ navigation, route }) => {
         status: status,
         latitude: latitude,
         longitude:longitude,
+        passengers: 0,
+        heading: 0,
       };
 
       // Send form data to JSON server
