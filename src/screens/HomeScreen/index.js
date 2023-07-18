@@ -53,6 +53,10 @@ const HomeScreen = ({ navigation, route }) => {
         navigation.navigate('CarsScreen', { activeUser });
     };
 
+    const goToCommuterScreen = () => {
+        navigation.navigate('CommuterStatus', { activeUser });
+    };
+
     const goToPoolStatus = () => {
         navigation.navigate('PoolStatus', { activeUser });
     };
@@ -298,7 +302,7 @@ const HomeScreen = ({ navigation, route }) => {
         </Pressable>
 
         <Pressable 
-            onPress={() => console.warn('mov')} 
+            onPress={goToCommuterScreen}
             style={[styles.roundButton, {top: 40, right: 10}]}>
             <Entypo name={"menu"} size={24} color="#4a4a4a"/>
         </Pressable>

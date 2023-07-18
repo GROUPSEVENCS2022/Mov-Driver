@@ -30,6 +30,11 @@
       "email": "joramgranger@gmail.com",
       "password": "test1234",
       "id": 6
+    },
+    {
+      "email": "joramgranger@gmail.com",
+      "password": "test1234",
+      "id": 7
     }
   ],
   "drivers": [
@@ -45,40 +50,10 @@
   ],
   "commuters": [
     {
-      "name": "Benard",
-      "origin": "Nakawa",
-      "destination": "City Square",
-      "status": "Arriving"
-    },
-    {
-      "name": "Peter",
-      "origin": "Nakawa",
-      "destination": "Wandegeya",
-      "status": "Onboard"
-    },
-    {
-      "name": "Commuter 3",
-      "origin": "Nakawa",
-      "destination": "Nakulabye",
-      "status": "Onboard"
-    },
-    {
-      "name": "Commuter 4",
-      "origin": "Nakawa",
+      "name": "Adrone Mickie",
       "destination": "Kasubi",
-      "status": "Onboard"
-    },
-    {
-      "name": "Musoke",
-      "origin": "Nakawa",
-      "destination": "Kawala",
-      "status": "Onboard"
-    },
-    {
-      "name": "Kayiwa",
-      "origin": "Nakawa",
-      "destination": "City Square",
-      "status": "Onboard"
+      "origin": "Makindye",
+      "id": 1
     }
   ],
   "cars": [
@@ -115,7 +90,7 @@
       ],
       "commuters": 0,
       "price": "4000",
-      "distance": 5,
+      "distance": 16,
       "id": 1
     }
   ]
