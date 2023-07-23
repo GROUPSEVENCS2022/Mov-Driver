@@ -2,48 +2,18 @@
   "signup": [],
   "signin": [
     {
-      "email": "joramgranger@gmail.com",
+      "email": "dragule@gmail.com",
       "password": "test1234",
       "id": 1
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 2
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 3
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 4
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 5
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 6
-    },
-    {
-      "email": "joramgranger@gmail.com",
-      "password": "test1234",
-      "id": 7
     }
   ],
   "drivers": [
     {
-      "firstName": "Adrone",
-      "lastName": "Mickie",
-      "email": "joramgranger@gmail.com",
-      "phoneNumber": "0777000111",
-      "driversLicense": "DL008",
+      "firstName": "Mr",
+      "lastName": "Dragule",
+      "email": "dragule@gmail.com",
+      "phoneNumber": "0777552586",
+      "driversLicense": "DL001",
       "password": "test1234",
       "id": 1
     }
@@ -51,46 +21,49 @@
   "commuters": [
     {
       "name": "Adrone Mickie",
+      "destination": "Makererere",
+      "origin": "Ntinda",
+      "id": 1
+    },
+    {
+      "name": "Adrone Mickie",
       "destination": "Kasubi",
       "origin": "Makindye",
-      "id": 1
-    }
-  ],
-  "cars": [
+      "id": 2
+    },
     {
-      "type": "Mov-Normal",
-      "brand": "Toyota",
-      "email": "joramgranger@gmail.com",
-      "plateNo": "UBA700A",
-      "dateOfCreation": 1689618057256,
-      "status": "on station",
-      "latitude": "0.3354670642213976",
-      "longitude": "32.56427878879299",
-      "passengers": 0,
-      "heading": 0,
-      "id": 1
+      "name": "Adrone Mickie",
+      "destination": "Kasubi",
+      "origin": "Makindye",
+      "id": 3
+    },
+    {
+      "name": "Adrone Mickie",
+      "destination": "Kasubi",
+      "origin": "Makindye",
+      "id": 4
     }
   ],
+  "cars": [],
   "rides": [],
   "pools": [
     {
-      "name": "Entebbe road",
-      "origin": "Pioneer mall",
-      "destination": "Entebbe",
-      "masterDriver": "joramgranger@gmail.com",
+      "name": "Makerere mosque",
+      "origin": "Makerere",
+      "destination": "Ntinda",
+      "masterDriver": "dragule@gmail.com",
       "participants": [
         {
-          "userEmail": "joramgranger@gmail.com",
-          "firstName": "Adrone",
-          "lastName": "Mickie",
-          "phoneNumber": "0777000111",
-          "driversLicense": "DL008",
-          "plateNo": "UBA700A"
+          "userEmail": "dragule@gmail.com",
+          "firstName": "Mr",
+          "lastName": "Dragule",
+          "phoneNumber": "0777552586",
+          "driversLicense": "DL001"
         }
       ],
       "commuters": 0,
       "price": "4000",
-      "distance": 16,
+      "distance": 9,
       "id": 1
     }
   ]
